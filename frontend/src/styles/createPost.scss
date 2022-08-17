@@ -1,0 +1,199 @@
+@import "./colors";
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-height: 2000px;
+  margin:20px auto 20px auto;
+  background-color: $rose;
+  border-radius: 10px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  align-items: center;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+
+  textarea {
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    width: 80%;
+    overflow-y: scroll;
+    outline: none;
+  }
+}
+
+.messagePost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  min-height: 100px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #4e5166;
+}
+.divPicture{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 20px auto;
+  max-height: 300px;
+  width:80%;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px;
+  box-shadow:  2px 2px 2px #4e5166;
+
+}
+
+.send-btn {
+  display: flex;
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.nom, .prenom {
+  margin-left: 5px;
+  font-size: large;
+  font-weight: bold;
+  color: $gris;
+}
+
+
+h3 {
+  color: $gris;
+  margin-bottom: 15px;
+}
+
+.profilPicture {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  margin: 10px;
+  object-fit: contain;
+  background-color: white;
+}
+
+input {
+  margin: 15px;
+}
+.fileInputContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fileInput{
+box-shadow: none;
+  margin-top: 15px;
+}
+
+.likes {
+  display: flex;
+  flex-direction: column;
+
+  i {
+    font-size: xx-large;
+    color: $gris;
+    cursor: pointer;
+  }
+
+  p {
+    color: $gris;
+  }
+}
+
+.dislikes {
+  display: flex;
+  flex-direction: column;
+
+  i {
+    font-size: xx-large;
+    color: $gris;
+    cursor: pointer;
+  }
+
+  p {
+    color: $gris;
+  }
+}
+
+.likeBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modifierBtn , .deleteBtn {
+  display: flex;
+  margin: 10px;
+  height: 30px;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #4e5166;
+}
+
+.timestamp{
+  color:$gris;
+  margin:5px;
+}
+
+@media only screen and (min-width:300px) and (max-width:768px){
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-height: 2000px;
+    margin:20px auto 20px auto;
+    background-color: $rose;
+    border-radius: 10px;
+  }
+  .send-btn {
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  .modifierBtn , .deleteBtn {
+    display: flex;
+    margin: 10px;
+    height: 30px;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #4e5166;
+  }
+}

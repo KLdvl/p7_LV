@@ -1,0 +1,63 @@
+@import "./colors";
+
+.connexion-form {
+  display: flex;
+  height: 350px;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  background-color: $rose;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 2px 2px 5px $gris;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#register-btn, #login-btn {
+  display: flex;
+  height: 50px;
+  width: 120px;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px $gris;
+}
+
+#sign-in-form, #sign-up-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+input {
+  border-radius: 5px;
+  border: white;
+  height: 25px;
+  box-shadow: 2px 2px 2px $gris;
+  outline: none;
+  cursor: pointer;
+}
+
+.active-btn {
+  background-color: $gris;
+  color: white;
+}
+
+#email-error, #password-error {
+  height: 10px;
+  width: auto;
+}
+

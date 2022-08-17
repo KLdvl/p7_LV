@@ -1,0 +1,46 @@
+@import "./colors";
+
+
+
+  .modify-post{
+    display: flex;
+    width:100%;
+    height: auto;
+    flex-direction: column;
+    background-color: $gris;
+    justify-content: center;
+    align-items: center;
+  }
+  .modify-textarea{
+    display: flex;
+    width: 80%;
+    border: none;
+    height: 150px;
+    width: 80%;
+    overflow-y: scroll;
+    outline: none;
+    margin:15px;
+    padding:5px;
+  }
+
+
+
+
+h3{
+  color:white;
+  margin-top:10px;
+}
+
+
+
+button{
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  height: 30px;
+  border-radius: 5px;
+  border:none;
+  outline:none;
+}

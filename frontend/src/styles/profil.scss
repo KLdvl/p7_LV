@@ -1,0 +1,98 @@
+@import "./colors";
+
+.profil-container {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 600px;
+  background-color: $rose;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+h1 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 20px;
+  color: $gris;
+}
+
+.profil-form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#prenom, #nom, {
+  width: 250px;
+  height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: white;
+  outline: none;
+
+}
+
+#bio {
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: white;
+}
+
+label {
+  font-weight: bold;
+  color: $gris;
+}
+
+.photo-profil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: $gris;
+  height: 400px;
+  width: 50%;
+  margin: 10px;
+
+
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 10px;
+
+}
+
+#profil-pic {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: white;
+
+
+}
+
+#sendBtn {
+  display: flex;
+  margin-top: 30px;
+  height: 30px;
+
+}
+
+.textAreaBio {
+  padding: 5px;
+  outline: none;
+  overflow-y:scroll;
+}
