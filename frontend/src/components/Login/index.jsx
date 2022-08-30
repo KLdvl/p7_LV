@@ -9,31 +9,30 @@ const Log = () => {
     const [signInModal, setSignInModal] = useState(true);
 
     const handleModals = (e) => {
-        if (e.target.id === "register-btn") {
+        if (e.target.id === "register-tab") {
             setSignInModal(false);
             setSignUpModal(true);
-        } else if (e.target.id === "login-btn") {
+        } else if (e.target.id === "signIn-tab") {
             setSignInModal(true);
             setSignUpModal(false);
         }
     }
 
     return (
-        <div className="connexion-form">
+        <div className="login">
+            <div className="tab-cells">
+
+                    <div onClick={handleModals} id="register-tab">
+                        S'inscrire
+                    </div>
+
+                    <div onClick={handleModals} id="signIn-tab">
+                        Se connecter
+                    </div>
+
+
+            </div>
             <div className="form-container">
-                <ul>
-                    <li>
-                        <button onClick={handleModals} id="register-btn"
-                                className={signUpModal ? "active-btn" : null}>
-                            S'inscrire
-                        </button>
-                    </li>
-                    <li>
-                        <button onClick={handleModals} id="login-btn" className={signInModal ? "active-btn" : null}>
-                            Se connecter
-                        </button>
-                    </li>
-                </ul>
                 {signUpModal && <SignUpForm/>}
                 {signInModal && <SignInForm/>}
             </div>

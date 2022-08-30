@@ -66,38 +66,36 @@ const CreateProfil = () => {
     return (
         <div className="profil-container">
             <h1 className="title">Votre profil</h1>
-            <div className="">
-                <form action="" onSubmit={handleSubmit} className="profil-form-container">
-                    <div className="form-column">
-                        <label htmlFor="prenom">Votre prénom</label>
-                        <input type="text"
-                               name="prenom"
-                               id="prenom"
-                               onChange={handleChange}
-                               value={state.prenom}
-                        />
-                        <label htmlFor="nom">Votre nom</label>
-                        <input type="text"
-                               name="nom"
-                               id="nom"
-                               onChange={handleChange}
-                               value={state.nom}
-                        />
-                        <label htmlFor="bio">Votre description</label>
-                        <textarea className="textAreaBio"  name="bio" id="bio" onChange={handleChange} value={state.bio}/>
-                    </div>
-                    <div className="photo-profil">
-                        <h3>Votre photo de profil</h3>
-                        {show ? <img id="profil-pic" src={imageURL} alt="votre fichier"/> : null}
-                        <br/>
-                        <input type="file" accept="image/*" onChange={onImageChange}/>
-                        <input type="submit" value="enregistrer mon profil" id="sendBtn"/>
-                    </div>
 
-                </form>
+            <form action="" onSubmit={handleSubmit} className="profil-form-container">
+                <div className="form-column">
+                    <label htmlFor="prenom">Votre prénom</label>
+                    <input type="text"
+                           name="prenom"
+                           id="prenom"
+                           onChange={handleChange}
+                           value={state.prenom}
+                    />
+                    <label htmlFor="nom">Votre nom</label>
+                    <input type="text"
+                           name="nom"
+                           id="nom"
+                           onChange={handleChange}
+                           value={state.nom}
+                    />
+                    <label htmlFor="bio">Votre description</label>
+                    <textarea className="textAreaBio" name="bio" id="bio" onChange={handleChange} value={state.bio}/>
+                </div>
+                <div className="photo-profil">
+                    <h3>Votre photo de profil</h3>
+                    {show ? <img id="profil-pic" src={imageURL} alt="votre fichier"/> : null}
+                    <br/>
+                    <label htmlFor="file" className="image-btn">Choisir une image</label>
+                    <input id="file" type="file" accept="image/*" onChange={onImageChange}/>
+                    <input type="submit" value="enregistrer mon profil" id="sendBtn"/>
+                </div>
 
-
-            </div>
+            </form>
 
 
         </div>

@@ -5,8 +5,8 @@
   flex-direction: column;
   height: 600px;
   width: 600px;
-  background-color: $rose;
-  border-radius: 20px;
+  background-color: #ffebeb;
+  //border-radius: 20px;
   align-items: center;
   justify-content: center;
   margin: auto;
@@ -33,8 +33,9 @@ h1 {
   height: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-radius: 20px;
-  border: white;
+  background-color: white;
+  //border-radius: 20px;
+  //border: white;
   outline: none;
 
 }
@@ -42,9 +43,9 @@ h1 {
 #bio {
   height: 200px;
   width: 250px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 20px;
+  margin: 20px 0 20px 20px;
+  box-shadow: 2px 2px 2px lightgrey;
+  //border-radius: 20px;
   border: white;
 }
 
@@ -60,17 +61,31 @@ label {
   justify-content: space-between;
   color: $gris;
   height: 400px;
-  width: 50%;
-  margin: 10px;
+  width: 40%;
+  margin-right: 15px;
+  h3{
+    color:$gris;
+  }
+  input{
+    display: none;
+  }
 
-
+}
+.image-btn{
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  background-color: white;
+  padding:5px;
+  border: 3px solid $gris;
+  border-radius: 4px;
 }
 
 .form-column {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 10px;
+  width: 40%;
+  margin-left: 15px;
 
 }
 
@@ -87,8 +102,11 @@ label {
 #sendBtn {
   display: flex;
   margin-top: 30px;
-  height: 30px;
-
+  height: 40px;
+  background-color: white;
+  padding:5px;
+  border: 3px solid $gris;
+  border-radius: 4px;
 }
 
 .textAreaBio {

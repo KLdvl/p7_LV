@@ -7,9 +7,9 @@ const CreatePost = () => {
         message: ""
     })
 
-    const [profil, getProfil] = useState('')
+    const [profil, setProfil] = useState('')
     useEffect(() => {
-        getAllProfil();
+        getMyProfil();
     }, []);
 
     const [image, setImage] = useState(undefined)
@@ -35,15 +35,15 @@ const CreatePost = () => {
     }
 
     const parsedStorage = JSON.parse(localStorage.user)
-    const getAllProfil = () => {
+    const getMyProfil = () => {
         axios({
             method: "GET",
-            url: `${process.env.REACT_APP_API_URL}api/profil/${parsedStorage.userId}`,
+            url: `${process.env.REACT_APP_API_URL}api/auth/${parsedStorage.userId}`,
             mode: "cors",
             headers: {Authorization: `token ${parsedStorage.token}`}
         })
             .then(res => {
-                getProfil(res.data)
+                setProfil(res.data)
             })
             .catch((err) => {
                 console.log(err);

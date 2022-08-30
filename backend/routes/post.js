@@ -6,11 +6,14 @@ const multer = require("../middleware/multer-posts");
 const auth = require("../middleware/authentification")
 
 // Importing methods for post
-const {createPost} = require("../controllers/post/create");
-const {readPost, readOnePost} = require("../controllers/post/read");
-const {updatePost} = require("../controllers/post/update");
-const {deletePost} = require("../controllers/post/delete");
-const {likePost} = require("../controllers/post/like");
+const {
+    createPost,
+    readPost,
+    readOnePost,
+    updatePost,
+    deletePost,
+    likePost
+} = require('../controllers/postController')
 
 // Creating express Router
 const router = express.Router();

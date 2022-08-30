@@ -4,8 +4,10 @@ import axios from 'axios';
 const SignUpForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [emailInvalid, setEmailInvalid] = useState('')
-    const [passwordInvalid, setPasswordInvalid] = useState('')
+    const [emailInvalid, setEmailInvalid] = useState('');
+    const [passwordInvalid, setPasswordInvalid] = useState('');
+    const [firstName, setFirstName]= useState('');
+    const [lastName, setlastName]= useState('');
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -21,12 +23,14 @@ const SignUpForm = () => {
             url: `${process.env.REACT_APP_API_URL}api/auth/signup`,
             data: {
                 email: email,
-                password: password
+                password: password,
+                firstName: firstName,
+                lastName: lastName
             }
         })
             .then((res) => {
                 localStorage.setItem('user', JSON.stringify(res.data));
-                window.location = "/profil"
+                window.location = "/trending"
             })
             .catch((err) => {
                 if (err.response.status === 400) return setPasswordInvalid(err.response.data.message)
@@ -36,7 +40,21 @@ const SignUpForm = () => {
 
     return (
         <form action="" onSubmit={handleSignup} id="sign-up-form">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="firstName">Votre prénom</label>
+            <input type="text"
+                   name="firstName"
+                   id="firstName"
+                   onChange={(e) => setFirstName(e.target.value)}
+                   value={firstName}
+            />
+            <label htmlFor="lastName">Votre nom</label>
+            <input type="text"
+                   name="lastName"
+                   id="lastName"
+                   onChange={(e) => setlastName(e.target.value)}
+                   value={lastName}
+            />
+            <label htmlFor="email">Votre Email</label>
             <input type="text"
                    name="email"
                    id="email"
@@ -44,7 +62,7 @@ const SignUpForm = () => {
                    value={email}
             />
             <div className="email-error">{emailInvalid}</div>
-            <label htmlFor="password">Mot de passe</label>
+            <label htmlFor="password">Créez votre mot de passe</label>
             <input type="password"
                    name="password"
                    id="password"

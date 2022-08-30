@@ -18,7 +18,6 @@ const mongoose = require("./db/db");
 // Routes used
 const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/post");
-const profilRoutes = require("./routes/profil")
 
 // Creating Express application
 const app = express();
@@ -66,12 +65,11 @@ app.use(limiter);
 // Use of routes
 app.use('/images/images-profils', express.static(path.join(__dirname, 'images/images-profils')))
 app.use('/images/images-posts', express.static(path.join(__dirname, 'images/images-posts')))
+app.use('/images', express.static(path.join(__dirname, 'images')))
 
 
 app.use("/api/auth", userRoutes);
 app.use("/api/post", postRoutes);
-app.use("/api/profil", profilRoutes);
-
 
 // Exporting app
 module.exports = app;
