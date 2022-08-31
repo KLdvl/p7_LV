@@ -7,7 +7,7 @@ const SignUpForm = () => {
     const [emailInvalid, setEmailInvalid] = useState('');
     const [passwordInvalid, setPasswordInvalid] = useState('');
     const [firstName, setFirstName]= useState('');
-    const [lastName, setlastName]= useState('');
+    const [lastName, setLastName]= useState('');
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -51,7 +51,7 @@ const SignUpForm = () => {
             <input type="text"
                    name="lastName"
                    id="lastName"
-                   onChange={(e) => setlastName(e.target.value)}
+                   onChange={(e) => setLastName(e.target.value)}
                    value={lastName}
             />
             <label htmlFor="email">Votre Email</label>

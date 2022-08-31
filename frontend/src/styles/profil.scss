@@ -101,16 +101,40 @@ label {
 
 #sendBtn {
   display: flex;
-  margin-top: 30px;
+
   height: 40px;
   background-color: white;
   padding:5px;
   border: 3px solid $gris;
   border-radius: 4px;
+  font-weight: bold;
+  color:#4E5166;
 }
 
 .textAreaBio {
   padding: 5px;
   outline: none;
   overflow-y:scroll;
+}
+
+.delete-btn{
+  display: flex;
+
+  height: 40px;
+  background-color: white;
+  padding:5px;
+  border: 3px solid darkred;
+  border-radius: 4px;
+  font-weight: bold;
+  color:#4E5166;
+}
+
+.profil-buttons{
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
 }

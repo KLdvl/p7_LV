@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-// import UploadImage from "./UploadImage";
 import axios from "axios";
 
 const CreateProfil = () => {
+
     const [state, setState] = useState({
-        prenom: "",
-        nom: "",
+        firstName: "",
+        lastName: "",
         bio: "",
     })
 
@@ -24,31 +24,81 @@ const CreateProfil = () => {
     }
 
     const handleChange = (e) => {
-        const {id, value} = e.target
+        const {name, value} = e.target
         setState(prevState => ({
             ...prevState,
-            [id]: value
+            [name]: value
         }))
     }
+
+    const getUser = () => {
+        const parsedStorage = JSON.parse(localStorage.user)
+        axios({
+            method: "get",
+            mode: "cors",
+            headers: {
+                Authorization: `token ${parsedStorage.token}`,
+            },
+            url: `${process.env.REACT_APP_API_URL}api/auth/${parsedStorage.userId}`
+        })
+            .then((res) => {
+                setState(prevState => ({
+                    ...prevState,
+                    firstName: res.data.firstName,
+                    lastName: res.data.lastName,
+                    bio: res.data.bio
+                }))
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    useEffect(() => {
+        getUser()
+    }, [])
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const parsedStorage = JSON.parse(localStorage.user)
+        axios({
+            method: "delete",
+            mode: "cors",
+            headers: {
+                Authorization: `token ${parsedStorage.token}`,
+            },
+            url: `${process.env.REACT_APP_API_URL}api/auth/${parsedStorage.userId}`
+        })
+            .then(() => {
+                localStorage.clear();
+                window.location = "/"
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const parsedStorage = JSON.parse(localStorage.user)
+        const updateObject = {
+            userId: parsedStorage.userId,
+            firstName: state.firstName,
+            lastName: state.lastName,
+            bio: state.bio,
+        }
 
         axios({
-            method: "post",
+            method: "put",
             mode: "cors",
             headers: {
                 Authorization: `token ${parsedStorage.token}`,
                 "Content-Type": "multipart/form-data"
             },
-            url: `${process.env.REACT_APP_API_URL}api/profil`,
+            url: `${process.env.REACT_APP_API_URL}api/auth/${parsedStorage.userId}`,
             data: {
-                userId: parsedStorage.userId,
-                prenom: state.prenom,
-                nom: state.nom,
-                bio: state.bio,
+                ...updateObject,
                 profilPicture: image
-
             }
         })
             .then((res) => {
@@ -69,19 +119,19 @@ const CreateProfil = () => {
 
             <form action="" onSubmit={handleSubmit} className="profil-form-container">
                 <div className="form-column">
-                    <label htmlFor="prenom">Votre prénom</label>
+                    <label htmlFor="firstName">Votre prénom</label>
                     <input type="text"
-                           name="prenom"
+                           name="firstName"
                            id="prenom"
                            onChange={handleChange}
-                           value={state.prenom}
+                           value={state.firstName}
                     />
-                    <label htmlFor="nom">Votre nom</label>
+                    <label htmlFor="lastName">Votre nom</label>
                     <input type="text"
-                           name="nom"
+                           name="lastName"
                            id="nom"
                            onChange={handleChange}
-                           value={state.nom}
+                           value={state.lastName}
                     />
                     <label htmlFor="bio">Votre description</label>
                     <textarea className="textAreaBio" name="bio" id="bio" onChange={handleChange} value={state.bio}/>
@@ -92,11 +142,14 @@ const CreateProfil = () => {
                     <br/>
                     <label htmlFor="file" className="image-btn">Choisir une image</label>
                     <input id="file" type="file" accept="image/*" onChange={onImageChange}/>
-                    <input type="submit" value="enregistrer mon profil" id="sendBtn"/>
+
                 </div>
 
             </form>
-
+            <div className="profil-buttons">
+                <button className="delete-btn" onClick={handleDelete}>Supprimer mon compte</button>
+                <input type="submit" value="enregistrer mon profil" id="sendBtn"/>
+            </div>
 
         </div>
     );

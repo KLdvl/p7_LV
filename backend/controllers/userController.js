@@ -18,12 +18,13 @@ exports.signUp = async (req, res) => {
 
         await user.save()
             .then(() => res.status(201).json({
+                userId: user._id,
+                isAdmin: user.isAdmin,
+                token: jwt.sign({userId: user._id,isAdmin: user.isAdmin }, process.env.JWT_TOKEN, {
+                    expiresIn: "24h"}),
                 message:"Utilisateur crée"
             }))
-            .catch (err)
-        {
-            res.status(400).json({message: err.message})
-        }
+
 
 
         }catch (err) {
@@ -87,7 +88,7 @@ exports.updateUser = async (req, res) => {
         const user = await User.findById({_id: req.params.id})
         const userLogged = await User.findById({_id: req.auth.userId})
 
-        const {email, password, userName} = req.body
+        const {firstName, lastName, bio} = req.body
         const {userId} = req.auth
         const {isAdmin} = userLogged
 
@@ -111,9 +112,9 @@ exports.updateUser = async (req, res) => {
                 }`
             } :
             {
-                email,
-                password,
-                userName
+                firstName,
+                lastName,
+                bio
             }
 
         await User.findByIdAndUpdate({_id: req.params.id}, {

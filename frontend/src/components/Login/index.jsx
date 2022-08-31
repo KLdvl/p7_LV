@@ -21,14 +21,12 @@ const Log = () => {
     return (
         <div className="login">
             <div className="tab-cells">
-
-                    <div onClick={handleModals} id="register-tab">
-                        S'inscrire
-                    </div>
-
-                    <div onClick={handleModals} id="signIn-tab">
-                        Se connecter
-                    </div>
+                <div onClick={handleModals} id="signIn-tab">
+                    Se connecter
+                </div>
+                <div onClick={handleModals} id="register-tab">
+                    S'inscrire
+                </div>
 
 
             </div>

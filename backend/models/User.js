@@ -14,8 +14,9 @@ const userSchema = mongoose.Schema({
     required: [true, "Veuillez renseigner un mot de passe"] },
   isAdmin: { type: Boolean, required: true, default: false},
   profilPicture: {type: String, default: URL},
-  lastName: {type: String, default: ""},
-  firstName: {type: String, default: ""}
+  bio:{type: String, default:""},
+  lastName: {type: String,required: true, default: ""},
+  firstName: {type: String,required:true, default: ""}
 });
 
 // Verifying if unique with plugin
