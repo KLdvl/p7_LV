@@ -12,7 +12,6 @@ exports.createPost = async (req, res) => {
             postPicture: `${req.protocol}://${req.get('host')}/images/images-posts/${req.file.filename}`,
             date: Date.now()} : {...req.body, date: Date.now()};
         delete postObject._id;
-
         await Post.create({
             ...postObject,
         })
@@ -23,7 +22,7 @@ exports.createPost = async (req, res) => {
 }
 
 // Method for getting all the sauces
-exports.readPost = async (req, res) => {
+exports.getAllPost = async (req, res) => {
     try {
         const post = await Post.find({}).sort({date: -1}).exec()
         await res.status(200).json(post);
@@ -33,12 +32,12 @@ exports.readPost = async (req, res) => {
 }
 
 // Method for getting one post selected by Id
-exports.readOnePost = async (req, res) => {
+exports.getOnePost = async (req, res) => {
     try {
         const post = await Post.findById({_id: req.params.id}).exec();
         await res.status(200).json(post)
     } catch(err) {
-        await res.status(404).json({message : err.message})
+        await res.status(400).json({message : err.message})
     }
 }
 

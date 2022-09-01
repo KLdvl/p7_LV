@@ -8,8 +8,8 @@ const auth = require("../middleware/authentification")
 // Importing methods for post
 const {
     createPost,
-    readPost,
-    readOnePost,
+    getAllPost,
+    getOnePost,
     updatePost,
     deletePost,
     likePost
@@ -20,8 +20,8 @@ const router = express.Router();
 
 // Routing for sauces
 router.post("/", auth, multer, createPost);
-router.get("/",auth, readPost);
-router.get("/:id", auth, readOnePost);
+router.get("/",auth, getAllPost);
+router.get("/:id", auth, getOnePost);
 router.put("/:id", auth, multer, updatePost);
 router.delete("/:id", auth, multer, deletePost);
 router.post("/:id/like", auth, likePost);

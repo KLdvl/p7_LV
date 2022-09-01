@@ -5,7 +5,7 @@ import LikeInPost from "./likeInPost/LikeInPost";
 import DislikeInPost from "./dislikeInPost/DislikeInPost";
 import UpdatePost from "./UpdatePost";
 
-const ModelPosts = () => {
+const DisplayPosts = () => {
     const parsedStorage = JSON.parse(localStorage.user)
     const [posts, getPosts] = useState('');
     const [isLoading, setLoading] = useState(true)
@@ -94,4 +94,4 @@ const ModelPosts = () => {
     );
 }
 
-export default ModelPosts;
+export default DisplayPosts;

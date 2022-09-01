@@ -105,7 +105,7 @@ const CreateProfil = () => {
                 if (res.data.errors) {
                     console.log(res.data.errors)
                 } else {
-                    window.location = "/Trending"
+                    window.location = "/trending"
                 }
             })
             .catch((err) => {
@@ -118,6 +118,7 @@ const CreateProfil = () => {
             <h1 className="title">Votre profil</h1>
 
             <form action="" onSubmit={handleSubmit} className="profil-form-container">
+
                 <div className="form-column">
                     <label htmlFor="firstName">Votre prénom</label>
                     <input type="text"
@@ -144,11 +145,10 @@ const CreateProfil = () => {
                     <input id="file" type="file" accept="image/*" onChange={onImageChange}/>
 
                 </div>
-
             </form>
             <div className="profil-buttons">
                 <button className="delete-btn" onClick={handleDelete}>Supprimer mon compte</button>
-                <input type="submit" value="enregistrer mon profil" id="sendBtn"/>
+               <button onClick={handleSubmit} id="sendBtn">enregistrer mon profil</button>
             </div>
 
         </div>

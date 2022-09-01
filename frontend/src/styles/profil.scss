@@ -58,7 +58,7 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   color: $gris;
   height: 400px;
   width: 40%;
@@ -74,10 +74,11 @@ label {
 .image-btn{
   cursor: pointer;
   display: flex;
-  height: 40px;
+  justify-content: center;
+  height: 30px;
   background-color: white;
-  padding:5px;
-  border: 3px solid $gris;
+  padding: 5px;
+  border:1px solid lightgrey;
   border-radius: 4px;
 }
 
@@ -101,7 +102,7 @@ label {
 
 #sendBtn {
   display: flex;
-
+  cursor:pointer;
   height: 40px;
   background-color: white;
   padding:5px;
@@ -119,7 +120,6 @@ label {
 
 .delete-btn{
   display: flex;
-
   height: 40px;
   background-color: white;
   padding:5px;

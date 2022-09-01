@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import CreatePost from '../components/Posts/CreatePost';
 import Navbar from '../components/Navbar';
-import ModelPosts from "../components/Posts/modelPosts";
+import DisplayPosts from "../components/Posts/DisplayPosts";
 
 
 const Trending = () => {
@@ -11,7 +11,7 @@ const Trending = () => {
             <Header/>
             <Navbar/>
             <CreatePost/>
-            <ModelPosts/>
+            <DisplayPosts/>
         </div>
     );
 };

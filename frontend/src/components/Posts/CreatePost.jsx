@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import '../../styles/createPost.scss';
+import ProfilInPost from "./profilInPost/ProfilInPost";
+
 
 const CreatePost = () => {
     const [state, setState] = useState({
@@ -83,9 +85,7 @@ const CreatePost = () => {
     return (
         <div className="post-container">
             <div className="profile-container">
-                <img className="profilPicture" src={profil.profilPicture} alt=""/>
-                <div className="prenom">{profil.prenom}</div>
-                <div className="nom">{profil.nom}</div>
+                <ProfilInPost profilId={parsedStorage.userId}/>
             </div>
             <form action="" onSubmit={handleSubmit}>
                 <div className="message">
