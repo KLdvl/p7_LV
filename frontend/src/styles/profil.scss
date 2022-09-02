@@ -90,14 +90,11 @@ label {
 
 }
 
-#profil-pic {
-  height: 200px;
+.profil-pic {
   width: 200px;
-  object-fit: contain;
-  border-radius: 50%;
+  clip-path: ellipse(50% 50%);
+  height: 200px;
   background-color: white;
-
-
 }
 
 #sendBtn {

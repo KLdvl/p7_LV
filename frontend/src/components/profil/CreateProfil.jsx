@@ -7,6 +7,7 @@ const CreateProfil = () => {
         firstName: "",
         lastName: "",
         bio: "",
+        profilPicture:""
     })
 
     const [image, setImage] = useState(undefined)
@@ -46,7 +47,8 @@ const CreateProfil = () => {
                     ...prevState,
                     firstName: res.data.firstName,
                     lastName: res.data.lastName,
-                    bio: res.data.bio
+                    bio: res.data.bio,
+                    profilPicture: res.data.profilPicture
                 }))
             })
             .catch((err) => {
@@ -139,7 +141,8 @@ const CreateProfil = () => {
                 </div>
                 <div className="photo-profil">
                     <h3>Votre photo de profil</h3>
-                    {show ? <img id="profil-pic" src={imageURL} alt="votre fichier"/> : null}
+                    <img src={state.profilPicture} alt="avatar" className="profil-pic"/>
+                    {/*{show ? <img id="profil-pic" src={imageURL} alt="votre fichier"/> : null}*/}
                     <br/>
                     <label htmlFor="file" className="image-btn">Choisir une image</label>
                     <input id="file" type="file" accept="image/*" onChange={onImageChange}/>

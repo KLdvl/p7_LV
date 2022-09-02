@@ -6,8 +6,9 @@
   width: 60%;
   max-height: 2000px;
   margin:20px auto 20px auto;
-  background-color: $rose;
-  border-radius: 10px;
+  background-color: #ffebeb;
+ box-shadow: 2px 2px 2px lightgrey;
+  border-radius: 4px;
 }
 
 .profile-container {
@@ -29,7 +30,7 @@
 
   textarea {
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     height: 100%;
     width: 80%;
     overflow-y: scroll;
@@ -45,9 +46,9 @@
   height: auto;
   min-height: 100px;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: white;
-  box-shadow: 2px 2px 2px #4e5166;
+  //box-shadow: 2px 2px 2px #4e5166;
 }
 .divPicture{
   display: flex;
@@ -63,19 +64,20 @@
   max-height: 300px;
   width:80%;
   object-fit: contain;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 4px;
+  //background-color: white;
   padding: 5px;
-  box-shadow:  2px 2px 2px #4e5166;
+  //box-shadow:  2px 2px 2px #4e5166;
 
 }
 
-.send-btn {
+.create-post-btn{
   display: flex;
   width: 15%;
   align-items: center;
   justify-content: center;
   margin: 20px;
+  background-color: white;
 }
 
 .nom, .prenom {
@@ -93,12 +95,10 @@ h3 {
 
 .profilPicture {
   height: 70px;
-  width: 70px;
-  border-radius: 100%;
+  width:70px;
   margin: 10px;
-  object-fit: contain;
-  background-color: white;
-}
+  clip-path:ellipse(50% 50%);
+  }
 
 input {
   margin: 15px;
@@ -109,8 +109,7 @@ input {
   align-items: center;
 }
 .fileInput{
-box-shadow: none;
-  margin-top: 15px;
+display:none;
 }
 
 .likes {
@@ -159,8 +158,8 @@ box-shadow: none;
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px #4e5166;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px lightgrey;
 }
 
 .timestamp{

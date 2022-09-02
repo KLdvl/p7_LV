@@ -60,8 +60,8 @@ const UpdatePost = ({post}) => {
                     onChange={handleChange} cols="50" rows="50"/>
                 {/*<input className="modify-file" type="file"/>               */}
                 <div className="picture">
-                    <h3>Votre photo</h3>
                     {show ? <img id="profil-pic" src={imageURL} alt="votre fichier"/> : null}
+                    <label htmlFor="file" className="image-btn">Choisir une image</label>
                     <input className="fileInput" type="file" accept="image/*" onChange={onImageChange}/>
                 </div>
                 <button onClick={handleModification}>Envoyer la modification</button>
