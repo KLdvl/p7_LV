@@ -1,11 +1,10 @@
-// Model used
 const Post = require("../models/Post");
 const User = require("../models/User");
 
-// External requires
+//fs est un gestionnaire de fichiers Node
 const fs = require("fs");
 
-// Method for creating a new post
+// Création de post
 exports.createPost = async (req, res) => {
     try {
         const postObject = req.file ? {...req.body,
@@ -21,7 +20,7 @@ exports.createPost = async (req, res) => {
     }
 }
 
-// Method for getting all the sauces
+// Recupération des posts
 exports.getAllPost = async (req, res) => {
     try {
         const post = await Post.find({}).sort({date: -1}).exec()
@@ -31,7 +30,7 @@ exports.getAllPost = async (req, res) => {
     }
 }
 
-// Method for getting one post selected by Id
+// Récupération d'un post par son ID
 exports.getOnePost = async (req, res) => {
     try {
         const post = await Post.findById({_id: req.params.id}).exec();
@@ -41,13 +40,13 @@ exports.getOnePost = async (req, res) => {
     }
 }
 
-// Method for modifying an existing post
+// Modifier un post
 exports.updatePost = async (req, res) => {
     try {
         const userLogged = await User.findById({_id: req.auth.userId});
         const post = await Post.findById({_id: req.params.id})
 
-// destructuring req.body
+// destructuring de req.body
         const {message} = req.body;
         const {userId} = req.auth
         const {isAdmin} = userLogged
@@ -58,14 +57,14 @@ exports.updatePost = async (req, res) => {
             return res.status(401).json({message: "requête non autorisée"})
         }
 
-        // Check if file is updated and delete old one if existing
+        //Enlève l'ancienne image si elle existe
         if(req.file) {
             const {postPicture} = post
             const filename = postPicture.split('/images/images-posts/')[1];
             fs.unlink(`images/images-posts/${filename}`, (err) => {})
         }
 
-        // Populate new object with new image or new datas
+        // ajout de la nouvelle image ou du nouveau message
         const postObject = req.file
             ? {
                 ...req.body,
@@ -77,7 +76,7 @@ exports.updatePost = async (req, res) => {
                 message: message,
             };
 
-// Update post data or image
+// Update du post
         await Post.findByIdAndUpdate({_id: req.params.id}, {
             ...postObject,
             _id: req.params.id,
@@ -90,7 +89,7 @@ exports.updatePost = async (req, res) => {
     }
 }
 
-// Method for deleting a post
+// Suppression de post
 exports.deletePost = async (req, res) => {
     try {
         const userLogged = await User.findById({_id: req.auth.userId});
@@ -121,19 +120,18 @@ exports.likePost = async (req, res) => {
     try {
         // Destructuring
         const {like, userId} = req.body;
-        // Find post that needs to be updated
         const post = await Post.findById({_id: req.params.id})
-        // Using switch to handle all the cases
+
         const { likes, dislikes, usersLiked, usersDisliked } = post
         switch (like) {
-            // If like === 1
+            // Si like === 1
             case 1:
                 if (!post.usersLiked.includes(userId) && !post.usersDisliked.includes(userId)) {
                     await Post.findByIdAndUpdate({_id: req.params.id}, {$inc: {likes: +1}, $push: {usersLiked: userId}})
                     await res.status(200).json({message: "Je like ce post" , likes, usersLiked })
                 }
                 break;
-            // If like === 0
+            // Si like === 0
             case 0:
                 if (post.usersLiked.includes(userId)) {
                     await Post.findByIdAndUpdate({_id: req.params.id}, {$inc: {likes: -1}, $pull: {usersLiked: userId}})
@@ -147,7 +145,7 @@ exports.likePost = async (req, res) => {
                     await res.status(200).json({message: "Je retire mon dislike", dislikes, usersDisliked})
                 }
                 break;
-            // If like === -1
+            // Si like === -1
             case -1:
                 if (!post.usersDisliked.includes(userId) && !post.usersLiked.includes(userId)) {
                     await Post.findByIdAndUpdate({_id: req.params.id}, {

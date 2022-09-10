@@ -1,14 +1,14 @@
-// External require
+
 const multer = require("multer");
 
-// Creating variable for handling different image extensions
+
 const MIME_TYPE = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
   'image/png': 'png'
 };
 
-// Method for storing an image
+// Methode pour stocker une image
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, 'images/images-posts')
@@ -20,13 +20,13 @@ const storage = multer.diskStorage({
   }
 });
 
-// Validator for fields in multer
+// Validator des inputs dans multer
 async function fileFilter (req, file, cb) {
   try {
-    // Regex to test fields for valid characters
+
     const fieldsRegex = /^[a-zA-Z0-9 _.,;éèêàùâïëöü'!()&\n\r]+$/;
 
-    // Creating const from req.body
+
     const {title, content } = req.body
 
     if(fieldsRegex.test(title) &&

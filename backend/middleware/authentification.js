@@ -1,7 +1,6 @@
-// External requires
 const jwt = require("jsonwebtoken");
 
-// Method for checking Id using stored token
+// Verifiaction de la validité du token pour s'authentifier
 module.exports = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];

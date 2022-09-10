@@ -58,13 +58,12 @@ const UpdatePost = ({post}) => {
                 <h3>Modifiez votre post ici:</h3>
                 <textarea className="modify-textarea" name="message" id="message" value={state.message}
                     onChange={handleChange} cols="50" rows="50"/>
-                {/*<input className="modify-file" type="file"/>               */}
                 <div className="picture">
-                    {show ? <img id="profil-pic" src={imageURL} alt="votre fichier"/> : null}
-                    <label htmlFor="file" className="image-btn">Choisir une image</label>
-                    <input className="fileInput" type="file" accept="image/*" onChange={onImageChange}/>
+                    {show ? <img id="update-pic" src={imageURL} alt="votre fichier"/> : null}
+                    <label htmlFor="file"  className="image-btn">Choisir une image</label>
+                    <input className="fileInput" name="file" id="file" type="file" accept="image/*" onChange={onImageChange}/>
                 </div>
-                <button onClick={handleModification}>Envoyer la modification</button>
+                <button className="modify-btn" onClick={handleModification}>Envoyer la modification</button>
             </div>
         </div>
     );

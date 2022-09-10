@@ -4,7 +4,7 @@ const fs = require("fs")
 
 const User = require("../models/User");
 
-// Method for signing up with password hashing with bcrypt
+//inscription
 exports.signUp = async (req, res) => {
     try {
         const {email, password, lastName, firstName} = req.body;
@@ -32,7 +32,7 @@ exports.signUp = async (req, res) => {
     }
 }
 
-// Method for loging in with authentification confirmed via token
+// connexion
 exports.logIn = async (req, res) => {
     try {
         const {email, password} = req.body;

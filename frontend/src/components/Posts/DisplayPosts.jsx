@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ProfilInPost from "./profilInPost/ProfilInPost";
 import LikeInPost from "./likeInPost/LikeInPost";
-import DislikeInPost from "./dislikeInPost/DislikeInPost";
 import UpdatePost from "./UpdatePost";
 
 const DisplayPosts = () => {
@@ -33,7 +32,7 @@ const DisplayPosts = () => {
             })
             .catch(err => console.log(err))
     };
-    if (isLoading) {
+    while (isLoading) {
         return <div>Loading...</div>
     }
     const displayPost = () => {
@@ -62,11 +61,11 @@ const DisplayPosts = () => {
                         <div className="messagePost">{post.message}</div>
                         {post.postPicture ?
                             <img className="picture" src={post.postPicture} alt=""/> : null}
-                        <div className="likeBar">
-                            <LikeInPost post={post} reload={reload}/>
-                            <DislikeInPost post={post} reload={reload}/>
+                        <div>
+                            <LikeInPost likes={post.likes} dislikes={post.dislikes} usersLiked={post.usersLiked} usersDisliked={post.usersDisliked} id={post._id} />
+                            {/*<DislikeInPost post={post} reload={reload}/>*/}
                         </div>
-                        {(parsedStorage.userId === post.userId || parsedStorage.role === "Admin") &&
+                        {(parsedStorage.userId === post.userId || parsedStorage.isAdmin === true) &&
                         <div>
                             <button className="modifierBtn" onClick={handleShow}>Modifier</button>
                             <button className="deleteBtn" onClick={deletePost}>Supprimer</button>

@@ -1,10 +1,11 @@
-// External requires
+//module de validation de password
+
 const passwordValidator = require("password-validator");
 
 module.exports = async (req, res, next) => {
   try {
     const {password} = req.body;
-    // Creation of schema for password
+    // Creation d'un schéma de password
     const passwordSchema = new passwordValidator();
 
     passwordSchema

@@ -1,9 +1,9 @@
-// External requires
+
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const URL= "http://localhost:5000/images/profil-default.jpg";
 
-// Schema for a user using mongoose
+// Schema pour User
 const userSchema = mongoose.Schema({
   email: {
     type: String,
@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
   firstName: {type: String,required:true, default: ""}
 });
 
-// Verifying if unique with plugin
+
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("User", userSchema);
