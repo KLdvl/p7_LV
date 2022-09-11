@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
+//gestion de la connexion
 const SignInForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

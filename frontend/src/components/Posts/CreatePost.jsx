@@ -101,7 +101,7 @@ const CreatePost = () => {
                 </div>
                 <div className="fileInputContainer">
                     <label htmlFor="file" className="image-btn">Choisir une image</label>
-                    <input className="fileInput" type="file" accept="image/*" onChange={onImageChange}/>
+                    <input className="fileInput" name="file" id="file" type="file" accept="image/*" onChange={onImageChange}/>
                 </div>
                 <input className="create-post-btn" type="submit" value="envoyer"/>
             </form>

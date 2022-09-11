@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
+//Gestion de l'inscription
 const SignUpForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
